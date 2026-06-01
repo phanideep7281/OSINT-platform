@@ -1,5 +1,6 @@
 import feedparser
 import streamlit as st
+import html
 from datetime import datetime
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
@@ -118,6 +119,9 @@ def render_cyber_news():
         if article["published"] != datetime.min:
             pub_str = article["published"].strftime("%d %b %Y").lstrip("0")
 
+        # Escape any HTML in titles coming from feeds to avoid embedded styles
+        safe_title = html.escape(article["title"]) if article.get("title") else ""
+
         st.markdown(f"""
 <div class='card' style='border-left:3px solid {badge_color};margin-bottom:10px;'>
   <div style='display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;'>
@@ -129,7 +133,7 @@ def render_cyber_news():
     {f'<span style="color:#4A6A8A;font-size:0.78rem;">{pub_str}</span>' if pub_str else ''}
   </div>
     <h3 style='color:#FFFFFF !important;font-weight:700;font-size:1.25rem;line-height:1.35;margin:0 0 8px 0;'>
-        <span style='color:#FFFFFF !important;'>{article["title"]}</span>
+        <span style='color:#FFFFFF !important;'>{safe_title}</span>
     </h3>
   <a href='{article["link"]}' target='_blank'
      style='color:#0064B4;font-size:0.82rem;text-decoration:none;font-weight:500;'>
