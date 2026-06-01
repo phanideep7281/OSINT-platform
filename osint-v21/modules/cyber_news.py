@@ -107,9 +107,18 @@ def render_cyber_news():
         "Krebs on Security": "#E87B00",
     }
 
+    # Inject a small stylesheet here (loaded after global CSS) to force visibility
+    st.markdown("""
+<style>
+  .osint-news-count { color: #FFFFFF !important; font-weight:700 !important; font-size:1.02rem !important; }
+  .osint-news-title { color: #FFFFFF !important; font-weight:700 !important; font-size:1.25rem !important; }
+  .osint-news-card, .osint-news-card * { color: #FFFFFF !important; }
+</style>
+""", unsafe_allow_html=True)
+
     st.markdown(
-        f"<p style='color:#CCCCCC;font-size:0.92rem;margin-bottom:12px;'>"
-        f"Showing <b style='color:#FFFFFF !important;font-weight:700;font-size:1.02rem;'>{len(articles)}</b> articles</p>",
+        f"<p class='osint-news-count' style='color:#CCCCCC;font-size:0.92rem;margin-bottom:12px;'>"
+        f"Showing <b class='osint-news-count'>{len(articles)}</b> articles</p>",
         unsafe_allow_html=True,
     )
 
@@ -123,7 +132,7 @@ def render_cyber_news():
         safe_title = html.escape(article["title"]) if article.get("title") else ""
 
         st.markdown(f"""
-<div class='card' style='border-left:3px solid {badge_color};margin-bottom:10px;'>
+    <div class='card osint-news-card' style='border-left:3px solid {badge_color};margin-bottom:10px;'>
   <div style='display:flex;align-items:center;gap:10px;margin-bottom:6px;flex-wrap:wrap;'>
     <span style='background:{badge_color}18;color:{badge_color};border:1px solid {badge_color}44;
                  font-size:0.72rem;font-weight:700;padding:2px 10px;border-radius:999px;
@@ -132,8 +141,8 @@ def render_cyber_news():
     </span>
     {f'<span style="color:#4A6A8A;font-size:0.78rem;">{pub_str}</span>' if pub_str else ''}
   </div>
-    <h3 style='color:#FFFFFF !important;font-weight:700;font-size:1.25rem;line-height:1.35;margin:0 0 8px 0;'>
-        <span style='color:#FFFFFF !important;'>{safe_title}</span>
+    <h3 class='osint-news-title' style='line-height:1.35;margin:0 0 8px 0;'>
+        <span class='osint-news-title'>{safe_title}</span>
     </h3>
   <a href='{article["link"]}' target='_blank'
      style='color:#0064B4;font-size:0.82rem;text-decoration:none;font-weight:500;'>
