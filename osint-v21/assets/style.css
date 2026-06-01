@@ -61,6 +61,17 @@ p, label, small, li, button {
   color: var(--text-secondary) !important;
 }
 
+/* OVERRIDE: Make news article titles WHITE - highest priority */
+.card > div[style*="font-weight:600"],
+.card div[style*="color:#FFFFFF!important"],
+div[style*="color:#FFFFFF!important;font-weight:600"] {
+  color: #FFFFFF !important;
+}
+
+.card div[style*="color:#FFFFFF!important;font-weight:600"] * {
+  color: #FFFFFF !important;
+}
+
 /* AGGRESSIVE: Force black on all light background elements */
 span[style*="background:#0064B4"],
 span[style*="background: #0064B4"],
@@ -198,10 +209,11 @@ div[data-testid="stPillsContainer"] button[aria-selected="true"],
  div[data-testid="stPillsContainer"] button.selected,
  div[data-testid="stPillsContainer"] button[kind="pillsActive"],
  div[data-testid="stPillsContainer"] button[aria-checked="true"],
- div[data-testid="stPillsContainer"] button[data-active="true"] {
-  background: linear-gradient(135deg, #7be1ff, #5ce0ff) !important;
-  color: #080E1A !important;
-  border: none !important;
+ div[data-testid="stPillsContainer"] button[data-active="true"],
+ div[data-testid="stPillsContainer"] button.copilot-selected-pill {
+  background: rgba(74, 180, 255, 0.14) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(74, 180, 255, 0.35) !important;
   box-shadow: 0 16px 42px rgba(74, 180, 255, 0.34) !important;
   transform: translateY(-1px) !important;
 }
@@ -209,8 +221,27 @@ div[data-testid="stPillsContainer"] button[aria-selected="true"],
 div[data-testid="stPillsContainer"] button[aria-selected="true"]:hover,
 div[data-testid="stPillsContainer"] button[data-selected="true"]:hover,
 div[data-testid="stPillsContainer"] button[aria-pressed="true"]:hover,
-div[data-testid="stPillsContainer"] button.selected:hover {
-  background: linear-gradient(135deg, #6bd4ff, #62c9ff) !important;
+div[data-testid="stPillsContainer"] button.selected:hover,
+div[data-testid="stPillsContainer"] button.copilot-selected-pill:hover {
+  background: rgba(74, 180, 255, 0.14) !important;
+}
+
+div[data-testid="stPillsContainer"] button.copilot-selected-pill span,
+ div[data-testid="stPillsContainer"] button.copilot-selected-pill * {
+  color: #FFFFFF !important;
+}
+
+/* Maintain hover style for selected pill buttons */
+div[data-testid="stPillsContainer"] button[aria-selected="true"],
+ div[data-testid="stPillsContainer"] button[data-selected="true"],
+ div[data-testid="stPillsContainer"] button[aria-pressed="true"],
+ div[data-testid="stPillsContainer"] button.selected,
+ div[data-testid="stPillsContainer"] button[kind="pillsActive"],
+ div[data-testid="stPillsContainer"] button[aria-checked="true"],
+ div[data-testid="stPillsContainer"] button[data-active="true"] {
+  background: rgba(74, 180, 255, 0.14) !important;
+  color: #FFFFFF !important;
+  border-color: rgba(74, 180, 255, 0.35) !important;
 }
 
 .stSelectbox input,
@@ -220,19 +251,25 @@ div[data-baseweb="select"] [data-baseweb="input"] {
   caret-color: transparent !important;
   cursor: pointer !important;
   user-select: none !important;
+  color: #000000 !important;
 }
 
 div[data-baseweb="select"] {
   background: #e6e9ed !important;
-  color: #111 !important;
+  color: #000000 !important;
   border-color: rgba(0,0,0,0.12) !important;
 }
 
 div[data-baseweb="select"] *,
 .stSelectbox div[data-baseweb="select"] *,
 div[data-testid="stSelectbox"] *,
-div[data-testid="stSelectbox"] [role="option"] * {
-  color: #111 !important;
+div[data-testid="stSelectbox"] [role="option"] *,
+div[role="option"] *,
+div[role="option"] span,
+div[role="option"] div,
+div[role="option"] p {
+  color: #000000 !important;
+  fill: #000000 !important;
 }
 
 div[data-baseweb="select"] [class*="singleValue"],
@@ -242,8 +279,10 @@ div[data-baseweb="select"] span,
 div[data-baseweb="select"] [role="option"],
 div[data-baseweb="select"] [data-testid="stSelectbox"] [role="option"],
 div[data-baseweb="select"] [role="option"] *,
-div[data-baseweb="select"] [data-testid="stSelectbox"] [role="option"] * {
-  color: #111 !important;
+div[data-baseweb="select"] [data-testid="stSelectbox"] [role="option"] *,
+[role="option"] *,
+[role="option"] {
+  color: #000000 !important;
 }
 
 div[data-baseweb="select"] [role="option"],
@@ -254,9 +293,11 @@ div[data-baseweb="select"] [data-testid="stSelectbox"] [role="option"] {
 div[data-baseweb="select"] [role="option"][aria-selected="true"],
 div[data-baseweb="select"] [role="option"][data-selected="true"],
 div[data-baseweb="select"] [role="option"][aria-selected="true"] *,
-div[data-baseweb="select"] [role="option"][data-selected="true"] * {
+div[data-baseweb="select"] [role="option"][data-selected="true"] *,
+[role="option"][aria-selected="true"] *,
+[role="option"][data-selected="true"] * {
   background: #d8dce1 !important;
-  color: #111 !important;
+  color: #000000 !important;
 }
 
 div[role="listbox"] {
@@ -264,14 +305,15 @@ div[role="listbox"] {
 }
 
 div[role="option"] {
-  color: #111 !important;
+  color: #000000 !important;
 }
 
 div[role="option"] *,
 div[role="option"] span,
 div[role="option"] div,
 div[role="option"] p {
-  color: #111 !important;
+  color: #000000 !important;
+  fill: #000000 !important;
 }
 
 div[role="option"][aria-selected="true"],
@@ -550,4 +592,28 @@ div[style*="background: #E8F0FB"] span {
 .ip-detected-box p,
 .ip-detected-box div {
   color: #000000 !important;
+}
+
+/* Strong override: force ALL text inside news cards to WHITE and increase headline size */
+.card, .card * {
+  color: #FFFFFF !important;
+  fill: #FFFFFF !important;
+}
+
+.card a, .card a * {
+  color: #FFFFFF !important;
+}
+
+.card div[style*="font-weight:600"],
+.card div[style*="font-weight:600"] * {
+  color: #FFFFFF !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+}
+
+/* Ensure read-more links are visible */
+.card a[role="link"],
+.card a {
+  color: #FFFFFF !important;
+  text-decoration: underline !important;
 }
