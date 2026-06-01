@@ -107,8 +107,8 @@ def render_cyber_news():
     }
 
     st.markdown(
-        f"<p style='color:#4A6A8A;font-size:0.85rem;margin-bottom:12px;'>"
-        f"Showing <b style='color:#0D3380;'>{len(articles)}</b> articles</p>",
+        f"<p style='color:#CCCCCC;font-size:0.92rem;margin-bottom:12px;'>"
+        f"Showing <b style='color:#FFFFFF !important;font-weight:700;font-size:1.02rem;'>{len(articles)}</b> articles</p>",
         unsafe_allow_html=True,
     )
 
@@ -128,7 +128,7 @@ def render_cyber_news():
     </span>
     {f'<span style="color:#4A6A8A;font-size:0.78rem;">{pub_str}</span>' if pub_str else ''}
   </div>
-  <div style='color:#0D3380;font-weight:600;font-size:0.97rem;line-height:1.45;margin-bottom:8px;'>
+  <div style='color:#FFFFFF!important;font-weight:600;font-size:1.08rem;line-height:1.45;margin-bottom:8px;'>
     {article["title"]}
   </div>
   <a href='{article["link"]}' target='_blank'
@@ -140,7 +140,7 @@ def render_cyber_news():
 
     # ── Footer note ──────────────────────────────────────────
     st.markdown("""
-<div style='margin-top:24px;font-size:0.78rem;color:#4A6A8A;text-align:center;'>
+<div style='margin-top:24px;font-size:0.85rem;color:#AAAAAA;text-align:center;'>
   News sourced directly from RSS feeds · Refresh the page for the latest updates
 </div>
 """, unsafe_allow_html=True)
