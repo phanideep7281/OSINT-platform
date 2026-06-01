@@ -161,24 +161,21 @@ selected_filter = st.session_state.active_filter
 # JS fallback: force active gradient on the selected pill button
 # Works regardless of which aria attribute Streamlit uses in the current version
 active_pill_label = selected_filter.replace("'", "\\'")
-st.markdown(f"""
+st.markdown("""
 <script>
 (function applyActivePill() {{
-    const label = '{active_pill_label}';
+    const label = '{0}';
     const container = document.querySelector('[data-testid="stPillsContainer"]');
     if (!container) {{ setTimeout(applyActivePill, 120); return; }}
+    const normalize = text => text.replace(/\\s+/g, ' ').trim();
+    const targetLabel = normalize(label);
     container.querySelectorAll('button').forEach(btn => {{
-        const isActive = btn.innerText.trim() === label;
-        btn.style.background    = isActive ? '#0064B4' : '';
-        btn.style.color         = isActive ? '#ffffff' : '';
-        btn.style.border        = isActive ? 'none' : '';
-        btn.style.fontWeight    = isActive ? '700' : '';
-        btn.style.boxShadow     = isActive ? '0 2px 10px rgba(0,60,140,0.25)' : '';
-        btn.style.textShadow    = isActive ? '0 1px 2px rgba(0,0,0,0.25)' : '';
+        const isActive = normalize(btn.innerText) === targetLabel;
+        btn.classList.toggle('copilot-selected-pill', isActive);
     }});
 }})();
 </script>
-""", unsafe_allow_html=True)
+""".format(active_pill_label), unsafe_allow_html=True)
 
 
 def should_show(tool_name: str) -> bool:
