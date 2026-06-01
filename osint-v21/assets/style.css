@@ -3,16 +3,16 @@
 /* ============================= */
 :root {
   --bg-primary:      #07101F;
-  --bg-surface:      rgba(12, 32, 65, 0.90);
-  --bg-panel:        rgba(8, 18, 38, 0.92);
-  --bg-panel-soft:   rgba(14, 32, 64, 0.82);
+  --bg-surface:      rgba(12, 32, 65, 0.92);
+  --bg-panel:        rgba(8, 18, 38, 0.94);
+  --bg-panel-soft:   rgba(14, 32, 64, 0.84);
   --border-soft:     rgba(255, 255, 255, 0.10);
-  --shadow-soft:     0 30px 80px rgba(0, 0, 0, 0.22);
+  --shadow-soft:     0 30px 90px rgba(0, 0, 0, 0.25);
   --text-primary:    #F8FAFF;
-  --text-secondary:  #C9D8FF;
-  --text-muted:      #9AB2D3;
+  --text-secondary:  #D4E0FF;
+  --text-muted:      #A2B8DA;
   --accent:          #4AB4FF;
-  --accent-alt:      #FFB56A;
+  --accent-alt:      #B96DFF;
   --accent-strong:   #5CE0FF;
   --accent-glow:     rgba(74, 180, 255, 0.28);
   --card-border:     rgba(255, 255, 255, 0.12);
@@ -26,8 +26,9 @@
 
 html, body, .stApp {
   min-height: 100%;
-  background: radial-gradient(circle at top right, rgba(74, 180, 255, 0.14), transparent 28%),
-              radial-gradient(circle at 20% 10%, rgba(255, 181, 106, 0.12), transparent 25%),
+  background: radial-gradient(circle at top right, rgba(74, 180, 255, 0.16), transparent 24%),
+              radial-gradient(circle at 85% 15%, rgba(185, 109, 255, 0.12), transparent 22%),
+              radial-gradient(circle at 10% 75%, rgba(255, 181, 106, 0.12), transparent 20%),
               linear-gradient(180deg, #081228 0%, #03070E 100%) !important;
   color: var(--text-primary) !important;
 }
@@ -46,9 +47,63 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.03em !important;
 }
 
-p, label, span, small, li, button, div {
+p, label, small, li, button {
   color: var(--text-secondary) !important;
 }
+
+/* Apply light text to specific Streamlit elements on dark backgrounds */
+.stMarkdown span,
+.stMarkdown p,
+.element-container span,
+.element-container p,
+.stTabs span,
+.stTabs p {
+  color: var(--text-secondary) !important;
+}
+
+/* AGGRESSIVE: Force black on all light background elements */
+span[style*="background:#0064B4"],
+span[style*="background: #0064B4"],
+span[style*="background:#E8F0FB"],
+span[style*="background: #E8F0FB"],
+span[style*="background:#FFF4E6"],
+span[style*="background: #FFF4E6"],
+span[style*="background:#F5F8FF"],
+span[style*="background: #F5F8FF"],
+span[style*="background:#FDECEA"],
+span[style*="background: #FDECEA"],
+span[style*="background:#EAF5F0"],
+span[style*="background: #EAF5F0"],
+span[style*="background:#F5F0FF"],
+span[style*="background: #F5F0FF"],
+div[style*="background:#FFF4E6"],
+div[style*="background: #FFF4E6"],
+div[style*="background:#F0F6FF"],
+div[style*="background: #F0F6FF"] {
+  color: #000000 !important;
+}
+
+span[style*="background:#0064B4"] *,
+span[style*="background: #0064B4"] *,
+span[style*="background:#E8F0FB"] *,
+span[style*="background: #E8F0FB"] *,
+span[style*="background:#FFF4E6"] *,
+span[style*="background: #FFF4E6"] *,
+span[style*="background:#F5F8FF"] *,
+span[style*="background: #F5F8FF"] *,
+span[style*="background:#FDECEA"] *,
+span[style*="background: #FDECEA"] *,
+span[style*="background:#EAF5F0"] *,
+span[style*="background: #EAF5F0"] *,
+span[style*="background:#F5F0FF"] *,
+span[style*="background: #F5F0FF"] *,
+div[style*="background:#FFF4E6"] *,
+div[style*="background: #FFF4E6"] *,
+div[style*="background:#F0F6FF"] *,
+div[style*="background: #F0F6FF"] * {
+  color: #000000 !important;
+}
+
 
 :where(input, textarea, select, .stTextInput input, .stSelectbox div[data-baseweb="select"]) {
   background: var(--input-bg) !important;
@@ -60,7 +115,7 @@ p, label, span, small, li, button, div {
 
 input:focus, textarea:focus, .stSelectbox div[data-baseweb="select"]:focus-within {
   border-color: var(--accent) !important;
-  box-shadow: 0 0 0 4px rgba(74, 180, 255, 0.12) !important;
+  box-shadow: 0 0 0 4px rgba(74, 180, 255, 0.14) !important;
 }
 
 ::placeholder {
@@ -68,9 +123,9 @@ input:focus, textarea:focus, .stSelectbox div[data-baseweb="select"]:focus-withi
 }
 
 button, .stButton > button {
-  background: rgba(34, 82, 164, 0.92) !important;
+  background: rgba(34, 82, 164, 0.96) !important;
   color: #FFFFFF !important;
-  border: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
   border-radius: 999px !important;
   padding: 0.9rem 1.6rem !important;
   font-weight: 700 !important;
@@ -80,8 +135,23 @@ button, .stButton > button {
 
 button:hover, .stButton > button:hover {
   transform: translateY(-1px) !important;
-  background: var(--button-hover) !important;
-  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22) !important;
+  background: linear-gradient(135deg, var(--accent), var(--accent-alt)) !important;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.24) !important;
+}
+
+button:focus-visible, .stButton > button:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 4px rgba(92, 224, 255, 0.26) !important;
+}
+
+button[aria-pressed="true"],
+button[aria-selected="true"],
+.stButton > button[aria-pressed="true"],
+.stButton > button[aria-selected="true"] {
+  background: linear-gradient(135deg, var(--accent), var(--accent-alt)) !important;
+  color: #080E1A !important;
+  border-color: rgba(255,255,255,0.10) !important;
+  box-shadow: 0 18px 40px rgba(74, 180, 255, 0.28) !important;
 }
 
 .stButton > button[kind="primary"],
@@ -95,7 +165,7 @@ button[data-testid="stBaseButton-primary"] {
 .stButton > button[kind="primary"]:hover,
 [data-testid="stBaseButton-primary"]:hover,
 button[data-testid="stBaseButton-primary"]:hover {
-  background: linear-gradient(135deg, #7be1ff, #4ab4ff) !important;
+  background: linear-gradient(135deg, #7be1ff, #5ce0ff) !important;
 }
 
 div[data-testid="stPillsContainer"] {
@@ -107,17 +177,17 @@ div[data-testid="stPillsContainer"] {
 
 div[data-testid="stPillsContainer"] button {
   background: rgba(255,255,255,0.08) !important;
-  color: rgba(255,255,255,0.80) !important;
-  border: 1px solid rgba(255,255,255,0.10) !important;
+  color: rgba(255,255,255,0.82) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
   border-radius: 999px !important;
   padding: 0.82rem 1.15rem !important;
   font-size: 0.9rem !important;
-  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02) !important;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,0.03) !important;
   transition: all 0.18s ease !important;
 }
 
 div[data-testid="stPillsContainer"] button:hover {
-  background: rgba(74, 180, 255, 0.12) !important;
+  background: rgba(74, 180, 255, 0.14) !important;
   border-color: rgba(74, 180, 255, 0.35) !important;
   color: #FFFFFF !important;
 }
@@ -129,15 +199,109 @@ div[data-testid="stPillsContainer"] button[aria-selected="true"],
  div[data-testid="stPillsContainer"] button[kind="pillsActive"],
  div[data-testid="stPillsContainer"] button[aria-checked="true"],
  div[data-testid="stPillsContainer"] button[data-active="true"] {
-  background: linear-gradient(135deg, rgba(74, 180, 255, 0.95), rgba(92, 224, 255, 0.95)) !important;
-  color: #08101A !important;
+  background: linear-gradient(135deg, #7be1ff, #5ce0ff) !important;
+  color: #080E1A !important;
   border: none !important;
-  box-shadow: 0 12px 40px rgba(74, 180, 255, 0.28) !important;
+  box-shadow: 0 16px 42px rgba(74, 180, 255, 0.34) !important;
+  transform: translateY(-1px) !important;
+}
+
+div[data-testid="stPillsContainer"] button[aria-selected="true"]:hover,
+div[data-testid="stPillsContainer"] button[data-selected="true"]:hover,
+div[data-testid="stPillsContainer"] button[aria-pressed="true"]:hover,
+div[data-testid="stPillsContainer"] button.selected:hover {
+  background: linear-gradient(135deg, #6bd4ff, #62c9ff) !important;
+}
+
+.stSelectbox input,
+div[data-baseweb="select"] input,
+.stSelectbox div[data-baseweb="select"],
+div[data-baseweb="select"] [data-baseweb="input"] {
+  caret-color: transparent !important;
+  cursor: pointer !important;
+  user-select: none !important;
+}
+
+div[data-baseweb="select"] {
+  background: #e6e9ed !important;
+  color: #111 !important;
+  border-color: rgba(0,0,0,0.12) !important;
+}
+
+div[data-baseweb="select"] *,
+.stSelectbox div[data-baseweb="select"] *,
+div[data-testid="stSelectbox"] *,
+div[data-testid="stSelectbox"] [role="option"] * {
+  color: #111 !important;
+}
+
+div[data-baseweb="select"] [class*="singleValue"],
+div[data-baseweb="select"] [class*="placeholder"],
+.stSelectbox span,
+div[data-baseweb="select"] span,
+div[data-baseweb="select"] [role="option"],
+div[data-baseweb="select"] [data-testid="stSelectbox"] [role="option"],
+div[data-baseweb="select"] [role="option"] *,
+div[data-baseweb="select"] [data-testid="stSelectbox"] [role="option"] * {
+  color: #111 !important;
+}
+
+div[data-baseweb="select"] [role="option"],
+div[data-baseweb="select"] [data-testid="stSelectbox"] [role="option"] {
+  background: #f4f5f7 !important;
+}
+
+div[data-baseweb="select"] [role="option"][aria-selected="true"],
+div[data-baseweb="select"] [role="option"][data-selected="true"],
+div[data-baseweb="select"] [role="option"][aria-selected="true"] *,
+div[data-baseweb="select"] [role="option"][data-selected="true"] * {
+  background: #d8dce1 !important;
+  color: #111 !important;
+}
+
+div[role="listbox"] {
+  background: #f4f5f7 !important;
+}
+
+div[role="option"] {
+  color: #111 !important;
+}
+
+div[role="option"] *,
+div[role="option"] span,
+div[role="option"] div,
+div[role="option"] p {
+  color: #111 !important;
+}
+
+div[role="option"][aria-selected="true"],
+div[role="option"][data-selected="true"] {
+  background: #d8dce1 !important;
+}
+
+/* Strong override: force select dropdown option text to black */
+.stSelectbox span,
+.stSelectbox span *,
+div[data-baseweb="select"] [class*="singleValue"],
+div[data-baseweb="select"] [class*="singleValue"] *,
+div[data-baseweb="select"] [class*="placeholder"],
+div[data-baseweb="select"] [class*="placeholder"] *,
+div[data-baseweb="select"] [role="option"],
+div[data-baseweb="select"] [role="option"] *,
+div[data-testid="stSelectbox"] [role="option"],
+div[data-testid="stSelectbox"] [role="option"] *,
+div[role="option"],
+div[role="option"] * {
+  color: #000000 !important;
+}
+
+.stSelectbox input[type="text"] {
+  pointer-events: none !important;
 }
 
 section[data-testid="stSidebar"] {
   background: rgba(10, 25, 48, 0.96) !important;
-  border-right: 1px solid rgba(255,255,255,0.08) !important;
+  border-right: 1px solid rgba(255,255,255,0.10) !important;
 }
 
 section[data-testid="stSidebar"] * {
@@ -156,7 +320,7 @@ section[data-testid="stSidebar"] button:hover {
 }
 
 [data-testid="stExpander"] {
-  background: rgba(255,255,255,0.05) !important;
+  background: rgba(255,255,255,0.06) !important;
   border: 1px solid rgba(255,255,255,0.10) !important;
   border-radius: 18px !important;
   box-shadow: var(--shadow-soft) !important;
@@ -165,18 +329,18 @@ section[data-testid="stSidebar"] button:hover {
 [data-testid="stExpander"] summary,
 [data-testid="stExpander"] details summary,
 [data-testid="stExpander"] > details > summary {
-  background: rgba(255,255,255,0.08) !important;
+  background: rgba(255,255,255,0.10) !important;
   border-radius: 18px !important;
   padding: 14px 18px !important;
 }
 
 [data-testid="stExpander"] summary:hover {
-  background: rgba(74, 180, 255, 0.12) !important;
+  background: rgba(74, 180, 255, 0.16) !important;
 }
 
 .card, .hub-card, .sherlock-hit, .hash-result-box, .hash-match, .hash-nomatch {
-  background: rgba(255,255,255,0.06) !important;
-  border: 1px solid rgba(255,255,255,0.10) !important;
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
   border-radius: 22px !important;
   box-shadow: var(--shadow-soft) !important;
   padding: 1.3rem 1.4rem !important;
@@ -200,7 +364,7 @@ section[data-testid="stSidebar"] button:hover {
 .green { color: var(--success) !important; }
 
 .footer, .caution-footer {
-  color: rgba(255,255,255,0.65) !important;
+  color: rgba(255,255,255,0.70) !important;
 }
 
 .caution-footer {
@@ -217,13 +381,13 @@ section[data-testid="stSidebar"] button:hover {
 .osint-header h1 {
   font-size: 2.8rem !important;
   margin: 0 0 6px 0 !important;
-  background: linear-gradient(135deg, #78DBFF, #3B7AF6, #FFBA6A) !important;
+  background: linear-gradient(135deg, #78DBFF, #B96DFF, #FFBA6A) !important;
   -webkit-background-clip: text !important;
   -webkit-text-fill-color: transparent !important;
 }
 
 .osint-header p {
-  color: #AFC3E9 !important;
+  color: #C5D6F4 !important;
   margin: 0 !important;
   font-size: 1rem !important;
 }
@@ -276,4 +440,114 @@ section[data-testid="stSidebar"] button:hover {
 .stCodeBlock > div, .stCodeBlock pre {
   background: rgba(255,255,255,0.05) !important;
   border: 1px solid rgba(255,255,255,0.10) !important;
+}
+
+/* ===== MASTER OVERRIDE: Black text on ALL light backgrounds ===== */
+*[style*="background:#E8F0FB"],
+*[style*="background: #E8F0FB"],
+*[style*="background:#FFF4E6"],
+*[style*="background: #FFF4E6"],
+*[style*="background:#F5F8FF"],
+*[style*="background: #F5F8FF"],
+*[style*="background:#FDECEA"],
+*[style*="background: #FDECEA"],
+*[style*="background:#EAF5F0"],
+*[style*="background: #EAF5F0"],
+*[style*="background:#F5F0FF"],
+*[style*="background: #F5F0FF"],
+*[style*="background:#F0F6FF"],
+*[style*="background: #F0F6FF"],
+*[style*="background:#0064B4"],
+*[style*="background: #0064B4"] {
+  color: #000000 !important;
+}
+
+*[style*="background:#E8F0FB"] *,
+*[style*="background: #E8F0FB"] *,
+*[style*="background:#FFF4E6"] *,
+*[style*="background: #FFF4E6"] *,
+*[style*="background:#F5F8FF"] *,
+*[style*="background: #F5F8FF"] *,
+*[style*="background:#FDECEA"] *,
+*[style*="background: #FDECEA"] *,
+*[style*="background:#EAF5F0"] *,
+*[style*="background: #EAF5F0"] *,
+*[style*="background:#F5F0FF"] *,
+*[style*="background: #F5F0FF"] *,
+*[style*="background:#F0F6FF"] *,
+*[style*="background: #F0F6FF"] *,
+*[style*="background:#0064B4"] *,
+*[style*="background: #0064B4"] * {
+  color: #000000 !important;
+}
+
+/* EXPLICIT: All text content inside FFF4E6 backgrounds */
+div[style*="background:#FFF4E6"] b,
+div[style*="background:#FFF4E6"] strong,
+div[style*="background: #FFF4E6"] b,
+div[style*="background: #FFF4E6"] strong {
+  color: #000000 !important;
+  font-weight: 700 !important;
+}
+
+/* CRITICAL: Force black on text nodes - override span rule */
+div[style*="background:#FFF4E6"]::after,
+div[style*="background: #FFF4E6"]::after {
+  color: #000000 !important;
+}
+
+/* Override Streamlit's text color injection */
+div[style*="background:#FFF4E6"] span,
+div[style*="background: #FFF4E6"] span {
+  color: #000000 !important !important;
+}
+
+/* FINAL FALLBACK: Catch all text in light background containers */
+div[style*="background:#FFF4E6"] p,
+div[style*="background: #FFF4E6"] p,
+div[style*="background:#FFF4E6"] label,
+div[style*="background: #FFF4E6"] label,
+div[style*="background:#FFF4E6"] small,
+div[style*="background: #FFF4E6"] small,
+div[style*="background:#E8F0FB"] span,
+div[style*="background: #E8F0FB"] span {
+  color: #000000 !important;
+}
+
+/* Targeting Streamlit markdown wrapper for IP notification */
+.stMarkdown div[style*="background:#FFF4E6"],
+.element-container div[style*="background:#FFF4E6"] {
+  color: #000000 !important;
+}
+
+.stMarkdown div[style*="background:#FFF4E6"] *,
+.element-container div[style*="background:#FFF4E6"] * {
+  color: #000000 !important;
+}
+
+/* Ultimate fallback - every element method */
+[style*="FFF4E6"],
+[style*="E8F0FB"],
+[style*="F0F6FF"] {
+  color: #000000 !important;
+}
+
+[style*="FFF4E6"] *,
+[style*="E8F0FB"] *,
+[style*="F0F6FF"] * {
+  color: #000000 !important;
+}
+
+/* CSS Class for IP detected box */
+.ip-detected-box {
+  color: #000000 !important;
+}
+
+.ip-detected-box *,
+.ip-detected-box span,
+.ip-detected-box b,
+.ip-detected-box strong,
+.ip-detected-box p,
+.ip-detected-box div {
+  color: #000000 !important;
 }

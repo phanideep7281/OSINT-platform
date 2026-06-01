@@ -45,6 +45,24 @@ div[data-baseweb="select"] span,
     color: #000000 !important;
 }
 
+div[data-baseweb="select"],
+div[data-baseweb="select"] *,
+div[role="listbox"],
+div[role="option"],
+div[role="option"] * {
+    color: #000000 !important;
+    opacity: 1 !important;
+}
+
+div[data-baseweb="select"] [class*="singleValue"],
+div[data-baseweb="select"] [class*="placeholder"] {
+    color: #000000 !important;
+}
+
+div[role="listbox"] {
+    background: #f4f5f7 !important;
+}
+
 /* ── SSL card: .green / .yellow / .red span colors must not be overridden ── */
 .card span.green  { color: #1A7A52 !important; font-weight: 600 !important; }
 .card span.yellow { color: #E87B00 !important; font-weight: 600 !important; }
@@ -424,7 +442,17 @@ if st.button("Search", use_container_width=True, type="primary"):
             st.error("Invalid input. Please enter a valid IP, domain, URL, email, or username.")
 
         elif input_type == "IP":
-            st.markdown(f"<div style='background:#FFF4E6;border:1.5px solid #F0C070;border-left:4px solid #E87B00;border-radius:8px;padding:10px 16px;color:#0D3380;font-size:0.92rem;margin-bottom:8px;'>IP address detected: <b>{query}</b></div>", unsafe_allow_html=True)
+            st.markdown(f"""
+            <style>
+            .ip-detected-box {{ color: #000000 !important; }}
+            .ip-detected-box * {{ color: #000000 !important; }}
+            .ip-detected-box span {{ color: #000000 !important; }}
+            .ip-detected-box b {{ color: #000000 !important; }}
+            </style>
+            <div class='ip-detected-box' style='background:#FFF4E6;border:1.5px solid #F0C070;border-left:4px solid #E87B00;border-radius:8px;padding:10px 16px;font-size:0.92rem;margin-bottom:8px;'>
+                <span style='color:#000000;'>IP address detected: </span><b style='color:#000000;font-weight:700;'>{query}</b>
+            </div>
+            """, unsafe_allow_html=True)
 
             if should_show("IP/Domain Reputation"):
                 render_ip_reputation(query)

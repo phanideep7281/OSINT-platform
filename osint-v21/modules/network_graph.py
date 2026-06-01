@@ -144,7 +144,7 @@ def build_graph(domain: str, include_subdomains: bool,
 
     net = Network(
         height="600px", width="100%",
-        bgcolor="#EEF4FB", font_color="#0D3380",
+        bgcolor="#EEF4FB", font_color="#000000",
         directed=True,
     )
     net.set_options("""
@@ -270,7 +270,7 @@ def render_network_graph(domain: str):
     st.markdown(
         "<div style='background:#F0F6FF;border:1.5px solid #C2D4EC;"
         "border-left:4px solid #0064B4;border-radius:8px;padding:10px 16px;"
-        "color:#0D3380;font-size:0.92rem;margin-bottom:12px;'>"
+        "color:#000000 !important;font-size:0.92rem;margin-bottom:12px;'>"
         "Interactive graph — drag nodes, scroll to zoom, hover for details."
         "</div>",
         unsafe_allow_html=True
@@ -288,13 +288,13 @@ def render_network_graph(domain: str):
     # Legend
     st.markdown("""
     <div style='display:flex;flex-wrap:wrap;gap:10px;margin:8px 0 12px;font-size:0.8rem;'>
-      <span style='background:#0064B4;color:#fff;padding:3px 10px;border-radius:12px;'>★ Target</span>
-      <span style='background:#E8F0FB;color:#0D3380;border:1px solid #0064B4;padding:3px 10px;border-radius:12px;'>● Subdomain</span>
-      <span style='background:#FFF4E6;color:#7A4000;border:1px solid #E87B00;padding:3px 10px;border-radius:12px;'>◆ IP Address</span>
-      <span style='background:#F5F8FF;color:#0D3380;border:1px solid #9AAFC8;padding:3px 10px;border-radius:12px;'>■ Open Port</span>
-      <span style='background:#FDECEA;color:#7B1A14;border:1px solid #C0392B;padding:3px 10px;border-radius:12px;'>▼ Threat</span>
-      <span style='background:#EAF5F0;color:#0F4A31;border:1px solid #1A7A52;padding:3px 10px;border-radius:12px;'>▲ Clean</span>
-      <span style='background:#F5F0FF;color:#3B2B8C;border:1px solid #7B68EE;padding:3px 10px;border-radius:12px;'>⬭ Geo</span>
+      <span style='background:#0064B4;color:#fff !important;padding:3px 10px;border-radius:12px;'>★ Target</span>
+      <span style='background:#E8F0FB;color:#000000 !important;border:1px solid #0064B4;padding:3px 10px;border-radius:12px;'>● Subdomain</span>
+      <span style='background:#FFF4E6;color:#000000 !important;border:1px solid #E87B00;padding:3px 10px;border-radius:12px;'>◆ IP Address</span>
+      <span style='background:#F5F8FF;color:#000000 !important;border:1px solid #9AAFC8;padding:3px 10px;border-radius:12px;'>■ Open Port</span>
+      <span style='background:#FDECEA;color:#000000 !important;border:1px solid #C0392B;padding:3px 10px;border-radius:12px;'>▼ Threat</span>
+      <span style='background:#EAF5F0;color:#000000 !important;border:1px solid #1A7A52;padding:3px 10px;border-radius:12px;'>▲ Clean</span>
+      <span style='background:#F5F0FF;color:#000000 !important;border:1px solid #7B68EE;padding:3px 10px;border-radius:12px;'>⬭ Geo</span>
     </div>
     """, unsafe_allow_html=True)
 
