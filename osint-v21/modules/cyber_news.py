@@ -128,9 +128,9 @@ def render_cyber_news():
     </span>
     {f'<span style="color:#4A6A8A;font-size:0.78rem;">{pub_str}</span>' if pub_str else ''}
   </div>
-  <div style='color:#FFFFFF!important;font-weight:600;font-size:1.08rem;line-height:1.45;margin-bottom:8px;'>
-    {article["title"]}
-  </div>
+    <h3 style='color:#FFFFFF !important;font-weight:700;font-size:1.25rem;line-height:1.35;margin:0 0 8px 0;'>
+        <span style='color:#FFFFFF !important;'>{article["title"]}</span>
+    </h3>
   <a href='{article["link"]}' target='_blank'
      style='color:#0064B4;font-size:0.82rem;text-decoration:none;font-weight:500;'>
     Read More →
